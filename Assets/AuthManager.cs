@@ -13,7 +13,6 @@ using System.Data.Common;
 public class AuthManager : MonoBehaviour
 {
     Firebase.Auth.FirebaseAuth auth;
-    //public Database Database;
 
     [SerializeField]
     private TMP_InputField inputEmail;
@@ -51,8 +50,6 @@ public class AuthManager : MonoBehaviour
             else if (task.IsCompleted)
             {
                 Firebase.Auth.AuthResult newPlayer = task.Result;
-                //Database.CreateData();
-                //SceneManager.LoadScene(2);
                 //do anything you want after player creation eg. create new player
             }
         });
@@ -81,8 +78,6 @@ public class AuthManager : MonoBehaviour
             if (currentPlayer != null)
             {
                 Debug.Log("login success");
-                //Database.Login();
-                //SceneManager.LoadScene(2);
             }
         });
     }
