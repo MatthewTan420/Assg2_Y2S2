@@ -32,7 +32,7 @@ public class test : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (gameObject.tag == "Destroy")
+        if (gameObject.tag == "Destroyer")
         {
             Destroy(collision.gameObject);
         }
