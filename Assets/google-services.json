@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "907672642024",
+    "firebase_url": "https://assg2-782a9-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "assg2-782a9",
+    "storage_bucket": "assg2-782a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907672642024:android:48053ecf58c1487e07045d",
+        "android_client_info": {
+          "package_name": "com.battlebox"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfUUSVaLM6OG0QjlFWVGgBgfwanpRC6YM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
