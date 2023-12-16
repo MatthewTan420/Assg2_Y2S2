@@ -3578,8 +3578,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputEmail: {fileID: 1863105447}
   inputPassword: {fileID: 1700947747}
-  logEmail: {fileID: 0}
-  logPassword: {fileID: 0}
+  logEmail: {fileID: 1863105447}
+  logPassword: {fileID: 1700947747}
 --- !u!4 &1645086359
 Transform:
   m_ObjectHideFlags: 0
