@@ -9,6 +9,7 @@ TagManager:
   - Destroy
   - Weapon
   - Destroyer
+  - Collectible
   layers:
   - Default
   - TransparentFX
