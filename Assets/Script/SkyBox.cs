@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SkyBox : MonoBehaviour
+{
+    public Material skyMaterial;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void changeSky()
+    {
+        RenderSettings.skybox = skyMaterial;
+    }
+}
