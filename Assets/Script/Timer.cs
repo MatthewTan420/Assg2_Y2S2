@@ -7,20 +7,31 @@ public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI timerLb1;
     public float timer;
+    public bool isEnd = false;
+    public Player Player;
 
     /// <summary>
     /// Starts timer, stops game when it hits 0
     /// </summary>
     void Update()
     {
-        if(timer > 0)
+        if (isEnd == false)
         {
-            timer -= Time.deltaTime;
-            DisplayTime(timer);
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                DisplayTime(timer);
+            }
+            else
+            {
+                timerLb1.text = "0:0";
+                Player.cc.enabled = false;
+                Player.end.SetActive(true);
+            }
         }
         else
         {
-            timerLb1.text = "0:0";
+            DisplayTime(timer);
         }
     }
 

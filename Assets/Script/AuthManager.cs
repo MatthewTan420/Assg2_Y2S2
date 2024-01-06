@@ -1,42 +1,53 @@
 using Firebase.Auth;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using Firebase;
-using Firebase.Database;
+//using Firebase.Database;
 using UnityEngine.UI;
 using Firebase.Extensions;
-using System.Data.Common;
+using UnityEngine.SceneManagement;
+using Oculus.Platform.Models;
+using Firebase.Database;
+using static OVRPlugin;
 
 public class AuthManager : MonoBehaviour
 {
-    Firebase.Auth.FirebaseAuth auth;
+    FirebaseAuth auth;
 
     [SerializeField]
     private TMP_InputField inputEmail;
-
     [SerializeField]
     private TMP_InputField inputPassword;
-
     [SerializeField]
     private TMP_InputField logEmail;
-
     [SerializeField]
     private TMP_InputField logPassword;
+    [SerializeField]
+    private TMP_InputField inputUser;
+    [SerializeField]
+    private TMP_InputField inputCoun;
+    [SerializeField]
+    private TMP_InputField inputAge;
 
-    [SerializeField]
-    private GameObject c3wdcwd;
-    [SerializeField]
-    private GameObject ecedwcd;
-    [SerializeField]
-    private GameObject cube;
-    [SerializeField]
-    private GameObject cube1;
+    public static string UID;
 
-    private void Awake()
+    public GameObject dataUI;
+    public GameObject authUI;
+    DatabaseReference mDatabaseRef;
+    DatabaseReference reference;
+
+    public TextMeshProUGUI t;
+
+    void Start()
     {
         auth = FirebaseAuth.DefaultInstance;
+        mDatabaseRef = FirebaseDatabase.DefaultInstance.RootReference;
+        reference = FirebaseDatabase.DefaultInstance.GetReference("players");
     }
 
     /// <summary>
@@ -47,21 +58,23 @@ public class AuthManager : MonoBehaviour
         string newEmail = inputEmail.text;
         string newPassword = inputPassword.text;
 
-        cube.SetActive(true);
+        //cube.SetActive(true);
         auth.CreateUserWithEmailAndPasswordAsync(newEmail, newPassword).ContinueWithOnMainThread(task =>
         {
-            cube1.SetActive(true);
             //perform task handling
             if (task.IsFaulted || task.IsCanceled)
             {
                 Debug.LogError("Sorry, there was an error creating your new account, ERROR: " + task.Exception);
-                c3wdcwd.SetActive(true);
                 return;//exit from the attempt
             }
             else if (task.IsCompleted)
             {
                 Firebase.Auth.AuthResult newPlayer = task.Result;
-                ecedwcd.SetActive(true);
+                UID = newPlayer.User.UserId;
+                t.text = UID;
+                dataUI.SetActive(true);
+                authUI.SetActive(false);
+                //SceneManager.LoadScene(1);
                 //do anything you want after player creation eg. create new player
             }
         });
@@ -90,13 +103,58 @@ public class AuthManager : MonoBehaviour
             if (currentPlayer != null)
             {
                 Debug.Log("login success");
-                c3wdcwd.SetActive(true);
             }
             else
             {
-                ecedwcd.SetActive(true);
+                
             }
         });
     }
 
+    public void CreateData()
+    {
+        string newUser = inputUser.text;
+        string newCoun = inputCoun.text;
+        int newAge = int.Parse(inputAge.text);
+        WriteNewUser(newUser, 0, 0, newCoun, newAge, false);
+    }
+
+    /// <summary>
+    /// Create data on firebase
+    /// </summary>
+    private void WriteNewUser(string name, int time, int points, string country, int age, bool admin)
+    {
+        User user = new User(name, time, points, country, age, admin);
+        string json = JsonUtility.ToJson(user);
+        mDatabaseRef.Child("players").Child(UID).SetRawJsonValueAsync(json);
+        SceneManager.LoadScene(1);
+    }
+
+    public void UpdateData(int time, int points)
+    {
+        Dictionary<string, object> childUpdates = new Dictionary<string, object>();
+        childUpdates["/time"] = time;
+        childUpdates["/points"] = points;
+
+        reference.Child(UID).UpdateChildrenAsync(childUpdates);
+    }
+
+    /*
+    public TextMeshProUGUI t;
+
+    private void OnEnable()
+    {
+        Application.logMessageReceived += Debugt;
+    }
+
+    private void OnDisable()
+    {
+        
+        Application.logMessageReceived -= Debugt;
+    }
+
+    private void Debugt(string msg, string st, LogType ty)
+    {
+        t.text += msg + "\n";
+    }*/
 }
