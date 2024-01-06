@@ -39,6 +39,8 @@ public class AuthManager : MonoBehaviour
     public GameObject dataUI;
     public GameObject authUI;
     public Timer Timer;
+    public GameObject login;
+    public GameObject signup;
 
     DatabaseReference mDatabaseRef;
     DatabaseReference reference;
@@ -109,7 +111,7 @@ public class AuthManager : MonoBehaviour
             if (currentPlayer != null)
             {
                 Debug.Log("login success");
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(3);
             }
         });
     }
@@ -130,7 +132,7 @@ public class AuthManager : MonoBehaviour
         User user = new User(name, time, points, country, age, admin);
         string json = JsonUtility.ToJson(user);
         mDatabaseRef.Child("players").Child(UID).SetRawJsonValueAsync(json);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 
     public void UpdateData(int time, int points)
@@ -176,6 +178,18 @@ public class AuthManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void noAccount()
+    {
+        signup.SetActive(true);
+        login.SetActive(false);
+    }
+
+    public void gotAccount()
+    {
+        signup.SetActive(false);
+        login.SetActive(true);
+    }
+    
     /*
     public TextMeshProUGUI t;
 
