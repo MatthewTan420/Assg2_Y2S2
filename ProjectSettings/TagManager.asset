@@ -12,6 +12,8 @@ TagManager:
   - Collectible
   - PlayGame
   - EndGame
+  - Lamp
+  - Bulb
   layers:
   - Default
   - TransparentFX
