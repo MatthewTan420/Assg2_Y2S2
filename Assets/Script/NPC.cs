@@ -19,14 +19,12 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextfire)
+        if (Time.time > nextfire && animator != null)
         {
             nextfire = Time.time + firerate;
             animator.SetBool("isTalk", true);
             Invoke(nameof(Talking), 3.0f);
         }
-
- 
     }
 
     private void Talking()
@@ -34,9 +32,9 @@ public class NPC : MonoBehaviour
         animator.SetBool("isTalk", false);
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.name == "OVRPlayerController")
         {
             aiVoice.Play();
             if (voiceTimer > 0)
