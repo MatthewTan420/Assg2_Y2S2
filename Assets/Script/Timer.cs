@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI timerLb1;
     public float timer;
+    public float orgTime;
     public bool isEnd = false;
     public Player Player;
 

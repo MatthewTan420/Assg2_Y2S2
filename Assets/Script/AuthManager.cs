@@ -38,6 +38,8 @@ public class AuthManager : MonoBehaviour
 
     public GameObject dataUI;
     public GameObject authUI;
+    public Timer Timer;
+
     DatabaseReference mDatabaseRef;
     DatabaseReference reference;
 
@@ -48,6 +50,11 @@ public class AuthManager : MonoBehaviour
         auth = FirebaseAuth.DefaultInstance;
         mDatabaseRef = FirebaseDatabase.DefaultInstance.RootReference;
         reference = FirebaseDatabase.DefaultInstance.GetReference("players");
+
+        if (UID != null && Timer != null)
+        {
+            Login();
+        }
     }
 
     /// <summary>
@@ -58,7 +65,6 @@ public class AuthManager : MonoBehaviour
         string newEmail = inputEmail.text;
         string newPassword = inputPassword.text;
 
-        //cube.SetActive(true);
         auth.CreateUserWithEmailAndPasswordAsync(newEmail, newPassword).ContinueWithOnMainThread(task =>
         {
             //perform task handling
@@ -103,10 +109,7 @@ public class AuthManager : MonoBehaviour
             if (currentPlayer != null)
             {
                 Debug.Log("login success");
-            }
-            else
-            {
-                
+                SceneManager.LoadScene(1);
             }
         });
     }
@@ -137,6 +140,40 @@ public class AuthManager : MonoBehaviour
         childUpdates["/points"] = points;
 
         reference.Child(UID).UpdateChildrenAsync(childUpdates);
+    }
+
+    public void Login()
+    {
+        mDatabaseRef.Child("players").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted)
+            {
+                //@TODO
+                //process error
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot ds = task.Result;
+
+                foreach (var v in ds.Children)
+                {
+                    string data = v.ToString();
+
+                    string playerKey = v.Key;
+                    string playerDetails = v.GetRawJsonValue();
+                    Debug.LogFormat("Player Key: {0} \n Player Details: {1}", playerKey, playerDetails);
+
+                    User p = JsonUtility.FromJson<User>(playerDetails);
+
+                    if (v.Key == UID)
+                    {
+                        Timer.orgTime = p.time;
+                    }
+                }
+            }
+        });
+
+        SceneManager.LoadScene(2);
     }
 
     /*
