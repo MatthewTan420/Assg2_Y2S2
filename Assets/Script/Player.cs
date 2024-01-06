@@ -49,7 +49,11 @@ public class Player : MonoBehaviour
             end.SetActive(true);
             timeFin = (int)Timer.timer;
             cc.enabled = false;
-            authManager.UpdateData(timeFin, 5);
+
+            if (timeFin >= Timer.orgTime)
+            {
+                authManager.UpdateData(timeFin, 5);
+            }
         }
     }
 
