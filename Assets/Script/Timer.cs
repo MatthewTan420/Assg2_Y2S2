@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerLb1;
     public float timer;
     public float orgTime;
-    public bool isEnd = false;
+    public bool isEnd = true;
     public Player Player;
 
     /// <summary>
@@ -44,5 +44,10 @@ public class Timer : MonoBehaviour
         float minutes = Mathf.FloorToInt(displayTime / 60);
         float seconds = Mathf.FloorToInt(displayTime % 60);
         timerLb1.text = $"{minutes}:{seconds}";
+    }
+
+    public void isStarted()
+    {
+        isEnd = false;
     }
 }
