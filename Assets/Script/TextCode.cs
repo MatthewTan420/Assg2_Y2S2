@@ -10,6 +10,7 @@ public class TextCode : MonoBehaviour
     public int textLen;
     public TextMeshPro length;
     public string code;
+    public GameObject door;
 
     private void Start()
     {
@@ -39,6 +40,7 @@ public class TextCode : MonoBehaviour
         if (code == text.text)
         {
             length.text = "correct";
+            door.SetActive(false);
         }
         else
         {
