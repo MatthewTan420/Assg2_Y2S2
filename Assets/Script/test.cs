@@ -10,6 +10,7 @@ public class test : MonoBehaviour
     public Transform door;
     public Grabbable Grabbable;
     public GameObject breakObj;
+    public GameObject bulbFix;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,12 @@ public class test : MonoBehaviour
             animator.SetBool("isKey",true);
             collision.transform.SetParent(door);
             Grabbable.enabled = false;
+        }
+
+        if (collision.gameObject.tag == "Bulb" && gameObject.tag == "Lamp")
+        {
+            collision.transform.SetParent(door);
+            bulbFix.SetActive(true);
         }
 
         if (collision.gameObject.tag == "Destroy" && gameObject.tag == "Weapon")
