@@ -5575,8 +5575,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839730755}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6677307, y: -0.67094934, z: -0.23205069, w: 0.22386417}
-  m_LocalPosition: {x: 56.95683, y: 26.243145, z: 74.10373}
+  m_LocalRotation: {x: 0.6735601, y: -0.67702365, z: -0.21360682, w: 0.20573771}
+  m_LocalPosition: {x: 54.9, y: 26.3, z: 75.6}
   m_LocalScale: {x: 34.76994, y: 34.348522, z: 34.769936}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5584,7 +5584,7 @@ Transform:
   - {fileID: 274863780}
   - {fileID: 951008815}
   m_Father: {fileID: 1430373357}
-  m_LocalEulerAnglesHint: {x: 39.32, y: 0, z: -0.55}
+  m_LocalEulerAnglesHint: {x: 180.692, y: 34.498, z: 90.079}
 --- !u!1 &861545791
 GameObject:
   m_ObjectHideFlags: 0
@@ -6582,10 +6582,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1645086358}
-        m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
-        m_MethodName: gotAccount
-        m_Mode: 1
+      - m_Target: {fileID: 951008818}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6593,6 +6593,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1365064934}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &951155034
 MonoBehaviour:
@@ -8440,10 +8452,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1645086358}
-        m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
-        m_MethodName: noAccount
-        m_Mode: 1
+      - m_Target: {fileID: 1365064934}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8451,6 +8463,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 951008818}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1228801923
 MonoBehaviour:
@@ -10163,18 +10187,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8d384a0295b89cb4a868b95e3a738817,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.028895251
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8d384a0295b89cb4a868b95e3a738817,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.028895251
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8d384a0295b89cb4a868b95e3a738817,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.028895251
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8d384a0295b89cb4a868b95e3a738817,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.07230204
+      value: 0.033
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d384a0295b89cb4a868b95e3a738817,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5733395
+      value: -0.581
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d384a0295b89cb4a868b95e3a738817,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2458009
+      value: 3.61
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d384a0295b89cb4a868b95e3a738817,
         type: 3}
@@ -10219,14 +10258,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8d384a0295b89cb4a868b95e3a738817,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8d384a0295b89cb4a868b95e3a738817,
         type: 3}
-      insertIndex: -1
+      insertIndex: 0
       addedObject: {fileID: 839730756}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d384a0295b89cb4a868b95e3a738817, type: 3}
@@ -10873,15 +10912,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3d1df49368d0c448475236f5822bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputEmail: {fileID: 543847957}
-  inputPassword: {fileID: 328907889}
-  logEmail: {fileID: 1272582079}
-  logPassword: {fileID: 1204192442}
-  inputUser: {fileID: 668469346}
-  inputCoun: {fileID: 795344484}
-  inputAge: {fileID: 181008761}
-  dataUI: {fileID: 1964602098}
-  authUI: {fileID: 1697726639}
+  inputEmail: {fileID: 795818551}
+  inputPassword: {fileID: 546512291}
+  logEmail: {fileID: 1765720102}
+  logPassword: {fileID: 1015506130}
+  inputUser: {fileID: 258392625}
+  inputCoun: {fileID: 823962249}
+  inputAge: {fileID: 2090121350}
+  dataUI: {fileID: 274863783}
+  authUI: {fileID: 1365064934}
   Timer: {fileID: 0}
   login: {fileID: 0}
   signup: {fileID: 0}
@@ -13933,7 +13972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1997438596
 Transform:
   m_ObjectHideFlags: 0

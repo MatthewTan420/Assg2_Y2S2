@@ -37,10 +37,11 @@ public class NPC : MonoBehaviour
         if(collision.gameObject.name == "OVRPlayerController")
         {
             aiVoice.Play();
+            /*
             if (voiceTimer > 0)
             {
                 animator.SetBool("isTalk", false);
-            }
+            }*/
         }
         
     }
