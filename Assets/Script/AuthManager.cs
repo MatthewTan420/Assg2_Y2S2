@@ -82,7 +82,6 @@ public class AuthManager : MonoBehaviour
                 t.text = UID;
                 dataUI.SetActive(true);
                 authUI.SetActive(false);
-                //SceneManager.LoadScene(1);
                 //do anything you want after player creation eg. create new player
             }
         });
@@ -111,7 +110,7 @@ public class AuthManager : MonoBehaviour
             if (currentPlayer != null)
             {
                 Debug.Log("login success");
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(1);
             }
         });
     }
@@ -121,25 +120,26 @@ public class AuthManager : MonoBehaviour
         string newUser = inputUser.text;
         string newCoun = inputCoun.text;
         int newAge = int.Parse(inputAge.text);
-        WriteNewUser(newUser, 0, 0, newCoun, newAge, false);
+        WriteNewUser(newUser, 0, 0, newCoun, newAge, false, 0);
     }
 
     /// <summary>
     /// Create data on firebase
     /// </summary>
-    private void WriteNewUser(string name, int time, int points, string country, int age, bool admin)
+    private void WriteNewUser(string name, int time, int points, string country, int age, bool admin, int num)
     {
-        User user = new User(name, time, points, country, age, admin);
+        User user = new User(name, time, points, country, age, admin, num);
         string json = JsonUtility.ToJson(user);
         mDatabaseRef.Child("players").Child(UID).SetRawJsonValueAsync(json);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);
     }
 
-    public void UpdateData(int time, int points)
+    public void UpdateData(int time, int points, int num)
     {
         Dictionary<string, object> childUpdates = new Dictionary<string, object>();
         childUpdates["/time"] = time;
         childUpdates["/points"] = points;
+        childUpdates["/num"] = num;
 
         reference.Child(UID).UpdateChildrenAsync(childUpdates);
     }
