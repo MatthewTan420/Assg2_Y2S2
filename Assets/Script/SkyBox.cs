@@ -45,11 +45,15 @@ public class SkyBox : MonoBehaviour
     public void changeSky3()
     {
         RenderSettings.skybox = skyMaterial3;
+        thirdPoint.SetActive(true);
+        secondPoint.SetActive(false);
     }
 
     public void changeSky4()
     {
         RenderSettings.skybox = skyMaterial4;
+        ending.SetActive(true);
+        thirdPoint.SetActive(false);
     }
 
     public void changeSkyBack3()
@@ -66,6 +70,6 @@ public class SkyBox : MonoBehaviour
     }
     public void goToBunker()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
